@@ -6,12 +6,18 @@ class Quotation {
   final String currecy;
   final double value;
   final double pctChange;
+  final double varBId;
+  final double high;
+  final double low;
 
   Quotation({
     required this.code,
     required this.currecy,
     required this.value,
     required this.pctChange,
+    required this.varBId,
+    required this.high,
+    required this.low,
   });
 
   Map<String, dynamic> toMap() {
@@ -20,6 +26,9 @@ class Quotation {
       'currecy': currecy,
       'value': value,
       'pctChange': pctChange,
+      'varBId': varBId,
+      'high': high,
+      'low': low,
     };
   }
 
@@ -29,6 +38,9 @@ class Quotation {
       currecy: map['currecy'] as String,
       value: map['value'] as double,
       pctChange: map['pctChange'] as double,
+      varBId: map['varBId'] as double,
+      high: map['high'] as double,
+      low: map['low'] as double,
     );
   }
 
