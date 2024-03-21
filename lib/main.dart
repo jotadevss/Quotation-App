@@ -1,14 +1,10 @@
+import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
+import 'package:quotation_currency_app/app/app.dart';
+import 'package:quotation_currency_app/app/injector.dart';
 
 void main() {
-  runApp(const App());
-}
+  registerInstances();
 
-class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp();
-  }
+  runApp(const RxRoot(child: App()));
 }
