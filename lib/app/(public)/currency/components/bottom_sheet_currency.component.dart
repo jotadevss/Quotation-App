@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotation_currency_app/app/(public)/components/gap.dart';
+import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/interactor/models/currency.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
 import 'package:routefly/routefly.dart';

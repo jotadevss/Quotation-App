@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:quotation_currency_app/app/(public)/components/gap.dart';
+import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
 
 class LabelCurrency extends StatelessWidget {

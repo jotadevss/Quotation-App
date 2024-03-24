@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:quotation_currency_app/app/(public)/components/gap.dart';
+import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/routes.dart';
 import 'package:routefly/routefly.dart';
 
