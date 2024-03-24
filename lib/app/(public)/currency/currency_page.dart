@@ -19,7 +19,7 @@ class CurrencyPage extends StatelessWidget {
       isScrollControlled: true,
       constraints: BoxConstraints(maxHeight: heigthScreen / 1.5),
       builder: (context) => CurrenciesBottomSheet(
-        allCurrencies: currencies,
+        allCurrencies: mainCurrencies,
         onSelectCurrency: setSelectedCurrency,
       ),
     );
