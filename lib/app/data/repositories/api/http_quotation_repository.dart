@@ -9,12 +9,9 @@ class HttpQuotationRepository implements IQuotationRepository {
   final _baseUrl = "https://economia.awesomeapi.com.br/last/";
 
   @override
-  Future<List<Quotation>> getAllQuotations(List<String> codes, String codeIn) async {
+  Future<List<Quotation>> getAllQuotations(List<String> pairs, String codeIn) async {
     try {
-      // Remove duplicate codes
-      codes.removeWhere((c) => c == codeIn);
-
-      final params = codes.map((c) => c.over(codeIn)).join(',');
+      final params = pairs.join(',');
 
       final response = await _client.get(Uri.parse("$_baseUrl$params"));
 
