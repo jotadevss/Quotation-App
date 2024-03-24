@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:quotation_currency_app/app/data/adapter/variation_adapter.dart';
 import 'package:quotation_currency_app/app/interactor/models/variation.dart';
 import 'package:quotation_currency_app/app/interactor/repositories/variantion_repository.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +21,7 @@ class HttpVariationRepository implements IVariationRepository {
 
       final data = jsonDecode(response.body) as List<dynamic>;
 
-      final variations = data.map((e) => Variantion.fromMap(e as Map<String, dynamic>)).toList();
+      final variations = data.map((e) => VariationAdapter.fromMap(e as Map<String, dynamic>)).toList();
 
       return variations;
     } catch (e) {

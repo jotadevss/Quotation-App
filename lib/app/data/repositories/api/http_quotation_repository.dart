@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:quotation_currency_app/app/data/adapter/quotation_adapter.dart';
 import 'package:quotation_currency_app/app/interactor/models/quotation.dart';
 import 'package:quotation_currency_app/app/interactor/repositories/quotation_repository.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +22,7 @@ class HttpQuotationRepository implements IQuotationRepository {
 
       final quotation = map // Convert Map to Quotation Object
           .entries
-          .map((c) => Quotation.fromMap(c.value))
+          .map((c) => QuotationAdapter.fromMap(c.value))
           .toList();
 
       return quotation;
@@ -46,7 +47,7 @@ class HttpQuotationRepository implements IQuotationRepository {
       final map = jsonDecode(json) as Map<String, dynamic>;
       final quotation = map // Convert Map to Quotation Object
           .entries
-          .map((c) => Quotation.fromMap(c.value))
+          .map((c) => QuotationAdapter.fromMap(c.value))
           .toList()[0];
 
       return quotation;
