@@ -1,29 +1,17 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
-import 'package:quotation_currency_app/app/(public)/currency/components/bottom_sheet_currency.component.dart';
 import 'package:quotation_currency_app/app/(public)/currency/components/label_currency.component.dart';
-import 'package:quotation_currency_app/app/interactor/actions/currency_actions.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/utils/constants/currencies.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
+import 'package:quotation_currency_app/routes.dart';
+import 'package:routefly/routefly.dart';
+
+import '../../interactor/actions/currency_actions.dart';
 
 class CurrencyPage extends StatelessWidget {
   const CurrencyPage({super.key});
-
-  void showCurrencies(BuildContext context) {
-    final heigthScreen = MediaQuery.of(context).size.height;
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      constraints: BoxConstraints(maxHeight: heigthScreen / 1.5),
-      builder: (context) => CurrenciesBottomSheet(
-        allCurrencies: mainCurrencies,
-        onSelectCurrency: setSelectedCurrency,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +40,7 @@ class CurrencyPage extends StatelessWidget {
             ),
             const Gap(heigth: 12, width: 0),
             ListTile(
-              onTap: () => showCurrencies(context),
+              onTap: () => showCurrencies(context, mainCurrencies),
               tileColor: Colors.grey.withOpacity(0.05),
               contentPadding: const EdgeInsets.symmetric(horizontal: 30),
               shape: RoundedRectangleBorder(
@@ -83,7 +71,9 @@ class CurrencyPage extends StatelessWidget {
             ),
             const Spacer(flex: 1),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Routefly.push(routePaths.home);
+              },
               style: const ButtonStyle(
                 elevation: MaterialStatePropertyAll(0),
                 backgroundColor: MaterialStatePropertyAll(Color(0xFF292929)),
