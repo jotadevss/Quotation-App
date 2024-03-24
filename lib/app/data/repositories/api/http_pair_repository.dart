@@ -29,7 +29,7 @@ class HttpPairRepository implements IPairRepository<PairDTO> {
 
       for (var element in spplited) {
         if (element[1] == codeIn) {
-          final pair = "${element[1]}-$codeIn";
+          final pair = "${element[0]}-$codeIn";
           final pairDto = PairDTO(pair: pair);
           pairs.add(pairDto);
         }

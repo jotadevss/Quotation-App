@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:quotation_currency_app/app/data/adapter/quotation_adapter.dart';
+import 'package:quotation_currency_app/app/interactor/dtos/output/pair_dto.dart';
 import 'package:quotation_currency_app/app/interactor/models/quotation.dart';
 import 'package:quotation_currency_app/app/interactor/contracts/repositories/quotation_repository.dart';
 import 'package:http/http.dart' as http;
@@ -10,9 +11,12 @@ class HttpQuotationRepository implements IQuotationRepository {
   final _baseUrl = "https://economia.awesomeapi.com.br/last/";
 
   @override
-  Future<List<Quotation>> getAllQuotations(List<String> pairs, String codeIn) async {
+  Future<List<Quotation>> getAllQuotations(List<PairDTO> pairs) async {
     try {
-      final params = pairs.join(',');
+      final params = pairs //
+          .map((p) => p.pair.toUpperCase())
+          .toList()
+          .join(',');
 
       final response = await _client.get(Uri.parse("$_baseUrl$params"));
 

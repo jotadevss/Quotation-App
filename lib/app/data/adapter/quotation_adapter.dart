@@ -6,7 +6,7 @@ class QuotationAdapter {
   static Quotation fromMap(Map<String, dynamic> map) {
     return Quotation(
       code: map['code'] as String,
-      currecy: map['name'] as String,
+      currecy: getCurrencyName(map['name'] as String),
       value: double.parse(map['bid']),
       pctChange: double.parse(map['pctChange']),
       varBid: double.parse(map['varBid']),
@@ -14,6 +14,8 @@ class QuotationAdapter {
       low: double.parse(map['low']),
     );
   }
+
+  static String getCurrencyName(String source) => source.split('/')[0];
 
   static Quotation fromJson(String source) => fromMap(jsonDecode(source) as Map<String, dynamic>);
 }
