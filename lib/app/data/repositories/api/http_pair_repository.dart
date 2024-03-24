@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:quotation_currency_app/app/interactor/dtos/output/pair_dto.dart';
-import 'package:quotation_currency_app/app/interactor/repositories/pair_repository.dart';
+import 'package:quotation_currency_app/app/interactor/contracts/repositories/pair_repository.dart';
 import 'package:http/http.dart' as http;
 
 class HttpPairRepository implements IPairRepository<PairDTO> {

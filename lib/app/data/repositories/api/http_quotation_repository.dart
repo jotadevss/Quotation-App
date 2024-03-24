@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:quotation_currency_app/app/data/adapter/quotation_adapter.dart';
 import 'package:quotation_currency_app/app/interactor/models/quotation.dart';
-import 'package:quotation_currency_app/app/interactor/repositories/quotation_repository.dart';
+import 'package:quotation_currency_app/app/interactor/contracts/repositories/quotation_repository.dart';
 import 'package:http/http.dart' as http;
 import 'package:quotation_currency_app/app/utils/extensions/formatter.extensions.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:quotation_currency_app/app/data/adapter/variation_adapter.dart';
 import 'package:quotation_currency_app/app/interactor/models/variation.dart';
-import 'package:quotation_currency_app/app/interactor/repositories/variantion_repository.dart';
+import 'package:quotation_currency_app/app/interactor/contracts/repositories/variantion_repository.dart';
 import 'package:http/http.dart' as http;
 
 class HttpVariationRepository implements IVariationRepository {
