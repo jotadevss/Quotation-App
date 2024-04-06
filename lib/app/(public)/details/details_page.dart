@@ -3,7 +3,7 @@ import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:quotation_currency_app/app/(public)/details/components/details_app_bar.component.dart';
 import 'package:quotation_currency_app/app/(public)/details/components/details_card.component.dart';
-import 'package:quotation_currency_app/app/(public)/details/components/details_line_chart_variations.component.dart';
+import 'package:quotation_currency_app/app/(public)/shared/charts/variation_line_chart.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/interactor/actions/variation_action.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
@@ -32,7 +32,6 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     // states
     final selectedCurrency$ = context.select(() => selectedCurrencyState$.value);
-
     final quotation = _quotatationDetailDTO.quotation;
 
     return Scaffold(

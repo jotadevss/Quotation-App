@@ -11,7 +11,7 @@ Future<void> getAllVariationsAction(String pair, int lastDays) async {
   setLoadingAction(false);
 }
 
-List<double> sliced(List<double> list, int length) {
+List<double> slicedValueVariantionAction(List<double> list, int length) {
   final intervalList = <double>[];
 
   list.sort();
@@ -44,7 +44,7 @@ List<double> sliced(List<double> list, int length) {
   return intervalList;
 }
 
-Map<int, List<double>> mapperPoint(List<double> sliced) {
+Map<int, List<double>> mapperPointValueVariationAction(List<double> sliced) {
   // Create list points
   final points = List.generate(sliced.length, (i) => i + 1);
 
@@ -69,7 +69,7 @@ Map<int, List<double>> mapperPoint(List<double> sliced) {
   return map;
 }
 
-List<double> rangeValues(List<double> values, Map<int, List<double>> rangePoints) {
+List<double> rangeValuesVariationToChartAction(List<double> values, Map<int, List<double>> rangePoints) {
   // Initialize list
   final valuesInRange = <double>[];
 

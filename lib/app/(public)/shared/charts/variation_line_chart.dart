@@ -35,7 +35,7 @@ class LineChartVariation extends StatelessWidget {
   // Spots
   List<FlSpot> get getSpots {
     final spots = <FlSpot>[];
-    final values = valuesInRange;
+    final values = valuesInRangeToChart;
 
     if (values.isEmpty) {
       for (var i = 0; i < 16; i++) {
@@ -94,7 +94,7 @@ class LineChartVariation extends StatelessWidget {
         showTitles: true,
         interval: 1,
         getTitlesWidget: (value, meta) {
-          final title = valuesVariationY.isEmpty ? 0.0 : valuesVariationY[value.toInt() - 1];
+          final title = valuesVariationToChart.isEmpty ? 0.0 : valuesVariationToChart[value.toInt() - 1];
           final formattedTitle = CurrencyFormatter.format(title, selectedCurrencyState$.value.code, true);
 
           final textWidget = Text(

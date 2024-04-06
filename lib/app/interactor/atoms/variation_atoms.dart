@@ -10,21 +10,21 @@ List<Variantion> get reversedVariations {
   return values;
 }
 
-List<double> get valuesVariationY {
+List<double> get valuesVariationToChart {
   if (variationState$.value.isEmpty) return [];
 
   final values = reversedVariations.map((e) => e.value).toList();
 
-  final slicedValues = sliced(values, 4);
+  final slicedValues = slicedValueVariantionAction(values, 4);
   return slicedValues;
 }
 
-List<double> get valuesInRange {
-  if (variationState$.value.isEmpty && valuesVariationY.isEmpty) return [];
+List<double> get valuesInRangeToChart {
+  if (variationState$.value.isEmpty && valuesVariationToChart.isEmpty) return [];
 
   final values = reversedVariations.map((e) => e.value).toList();
 
-  final mapRangePoint = mapperPoint(valuesVariationY);
-  final valuesRange = rangeValues(values, mapRangePoint);
+  final mapRangePoint = mapperPointValueVariationAction(valuesVariationToChart);
+  final valuesRange = rangeValuesVariationToChartAction(values, mapRangePoint);
   return valuesRange;
 }

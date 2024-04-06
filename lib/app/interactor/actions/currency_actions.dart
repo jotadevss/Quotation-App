@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quotation_currency_app/app/(public)/shared/components/bottom_sheet_currency.component.dart';
+import 'package:quotation_currency_app/app/(public)/shared/sheet/bottom_sheet_currency.component.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/models/currency.dart';
 
