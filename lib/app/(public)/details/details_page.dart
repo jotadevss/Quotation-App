@@ -31,7 +31,7 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     // states
-    final selectedCurrencyCode$ = context.select(() => selectedCurrency.code);
+    final selectedCurrency$ = context.select(() => selectedCurrencyState$.value);
 
     final quotation = _quotatationDetailDTO.quotation;
 
@@ -67,7 +67,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 const Gap(heigth: 18, width: 0),
                 CardDetail(
                   quotation: quotation,
-                  selectedCurrencyCode: selectedCurrencyCode$,
+                  selectedCurrencyCode: selectedCurrency$.code,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 32),

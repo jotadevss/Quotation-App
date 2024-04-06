@@ -15,7 +15,7 @@ class CurrencyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currency = context.select(() => selectedCurrency);
+    final currency = context.select(() => selectedCurrencyState$.value);
 
     return Scaffold(
       body: Padding(

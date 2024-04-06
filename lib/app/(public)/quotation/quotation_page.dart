@@ -14,8 +14,8 @@ class QuotationPagee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final quotations = context.select(() => allQuoations);
-    final currency = context.select(() => selectedCurrency);
+    final quotations$ = context.select(() => allQuoations);
+    final selectedCurrency$ = context.select(() => selectedCurrencyState$.value);
 
     return Scaffold(
       body: CustomScrollView(
@@ -72,16 +72,16 @@ class QuotationPagee extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             sliver: SliverGrid.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              itemCount: quotations.length,
+              itemCount: quotations$.length,
               itemBuilder: (context, index) {
-                final quotation = quotations[index];
+                final quotation = quotations$[index];
                 return CardBox(
                   quotation: quotation,
-                  currency: currency,
+                  currency: selectedCurrency$,
                   onTap: () {
                     Routefly.pushNavigate(
                       routePaths.details,
-                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency.code),
+                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency$.code),
                     );
                   },
                 );

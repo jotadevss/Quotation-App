@@ -27,20 +27,22 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    getAllQuotation(selectedCurrency.code);
+    final selectedCurrency$ = selectedCurrencyState$.value;
+    getAllQuotation(selectedCurrency$.code);
   }
 
   @override
   Widget build(BuildContext context) {
     // states
+    final selectedCurrency$ = context.select(() => selectedCurrencyState$.value);
     final currency$ = context.select(() => selectedCurrencyState$.value);
     final isLoading$ = context.select(() => loadingState$.value);
     final quotations$ = context.select(() => quotationsState$.value);
 
     // observer
-    rxObserver(() => selectedCurrency, effect: (c) {
+    rxObserver(() => selectedCurrency$, effect: (c) {
       if (c!.code != currency$.code) {
-        getAllQuotation(selectedCurrency.code);
+        getAllQuotation(selectedCurrency$.code);
       }
     });
 
@@ -81,13 +83,13 @@ class _HomePageState extends State<HomePage> {
                           MainCard(
                             currency: highestQuote?.currecy ?? "",
                             code: highestQuote?.code ?? "",
-                            selectedCurrencyCode: selectedCurrency.code,
+                            selectedCurrencyCode: selectedCurrency$.code,
                             value: highestQuote?.value ?? 0.0,
                             pctChange: highestQuote?.pctChange ?? 0.0,
                             onTap: () {
                               Routefly.pushNavigate(
                                 routePaths.details,
-                                arguments: QuotationDetailDTO(quotation: highestQuote ?? quotations$[0], codeIn: selectedCurrency.code),
+                                arguments: QuotationDetailDTO(quotation: highestQuote ?? quotations$[0], codeIn: selectedCurrency$.code),
                               );
                             },
                           ),
@@ -138,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                                   onTap: () {
                                     Routefly.pushNavigate(
                                       routePaths.details,
-                                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency.code),
+                                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency$.code),
                                     );
                                   },
                                 );

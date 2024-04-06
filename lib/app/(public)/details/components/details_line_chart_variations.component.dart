@@ -56,7 +56,6 @@ class LineChartVariation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // States
-    final selectedCurrencyCode$ = context.select(() => selectedCurrency.code);
     final variations$ = context.select(() => reversedVariations);
 
     // Widgets
@@ -96,7 +95,7 @@ class LineChartVariation extends StatelessWidget {
         interval: 1,
         getTitlesWidget: (value, meta) {
           final title = valuesVariationY.isEmpty ? 0.0 : valuesVariationY[value.toInt() - 1];
-          final formattedTitle = CurrencyFormatter.format(title, selectedCurrencyCode$, true);
+          final formattedTitle = CurrencyFormatter.format(title, selectedCurrencyState$.value.code, true);
 
           final textWidget = Text(
             formattedTitle,
@@ -140,7 +139,7 @@ class LineChartVariation extends StatelessWidget {
                 for (var i = 0; i < touchedBarSpots.length; i++) {
                   Variantion variation = variations$[touchedBarSpots[i].spotIndex];
 
-                  String text = "${CurrencyFormatter.format(variation.value, selectedCurrencyCode$)} \n";
+                  String text = "${CurrencyFormatter.format(variation.value, selectedCurrencyState$.value.code)} \n";
 
                   final toolTipItem = LineTooltipItem(
                       text,
