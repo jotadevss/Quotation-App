@@ -25,7 +25,7 @@ class _DetailsPageState extends State<DetailsPage> {
   void initState() {
     super.initState();
     final pair = "${_quotatationDetailDTO.quotation.code}-${_quotatationDetailDTO.codeIn}";
-    getAllVariations(pair, 15);
+    getAllVariationsAction(pair, 15);
   }
 
   @override

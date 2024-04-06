@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     final selectedCurrency$ = selectedCurrencyState$.value;
-    getAllQuotation(selectedCurrency$.code);
+    getAllQuotationAction(selectedCurrency$.code);
   }
 
   @override
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     // observer
     rxObserver(() => selectedCurrency$, effect: (c) {
       if (c!.code != currency$.code) {
-        getAllQuotation(selectedCurrency$.code);
+        getAllQuotationAction(selectedCurrency$.code);
       }
     });
 
@@ -57,8 +57,8 @@ class _HomePageState extends State<HomePage> {
                 AppBarHome(
                   currency: currency$,
                   isLoading: isLoading$,
-                  onTap: () => showCurrencies(context, mainCurrencies),
-                  onRefresh: () => getAllQuotation(currency$.code),
+                  onTap: () => showCurrenciesAction(context, mainCurrencies),
+                  onRefresh: () => getAllQuotationAction(currency$.code),
                 ),
                 (isLoading$)
                     ? const SkeletonHome()

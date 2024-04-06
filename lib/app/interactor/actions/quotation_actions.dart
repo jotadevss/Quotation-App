@@ -6,12 +6,12 @@ import 'package:quotation_currency_app/app/interactor/contracts/repositories/quo
 import 'package:quotation_currency_app/app/interactor/dtos/output/pair_dto.dart';
 import 'package:quotation_currency_app/app/interactor/models/quotation.dart';
 
-void setQuotations(List<Quotation> quotations) {
+void setQuotationsAction(List<Quotation> quotations) {
   quotationsState$.value = quotations;
 }
 
-Future<void> getAllQuotation(String codeIn) async {
-  setLoading(true);
+Future<void> getAllQuotationAction(String codeIn) async {
+  setLoadingAction(true);
 
   final pairRepository = injector.get<IPairRepository>();
   final quotationRepository = injector.get<IQuotationRepository>();
@@ -19,7 +19,7 @@ Future<void> getAllQuotation(String codeIn) async {
   final pairs = await pairRepository.getPairs(codeIn) as List<PairDTO>;
   final quotations = await quotationRepository.getAllQuotations(pairs);
 
-  setQuotations(quotations);
+  setQuotationsAction(quotations);
 
-  setLoading(false);
+  setLoadingAction(false);
 }

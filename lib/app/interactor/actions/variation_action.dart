@@ -3,12 +3,12 @@ import 'package:quotation_currency_app/app/interactor/actions/global_action.dart
 import 'package:quotation_currency_app/app/interactor/atoms/variation_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/contracts/repositories/variantion_repository.dart';
 
-Future<void> getAllVariations(String pair, int lastDays) async {
-  setLoading(true);
+Future<void> getAllVariationsAction(String pair, int lastDays) async {
+  setLoadingAction(true);
   final repository = injector.get<IVariationRepository>();
   final variations = await repository.getLastVariations(lastDays, pair);
   variationState$.value = variations;
-  setLoading(false);
+  setLoadingAction(false);
 }
 
 List<double> sliced(List<double> list, int length) {

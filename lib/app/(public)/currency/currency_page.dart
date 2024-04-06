@@ -2,13 +2,12 @@ import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/(public)/currency/components/currency_label.component.dart';
+import 'package:quotation_currency_app/app/interactor/actions/currency_actions.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/utils/constants/currencies.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
 import 'package:quotation_currency_app/routes.dart';
 import 'package:routefly/routefly.dart';
-
-import '../../interactor/actions/currency_actions.dart';
 
 class CurrencyPage extends StatelessWidget {
   const CurrencyPage({super.key});
@@ -40,7 +39,7 @@ class CurrencyPage extends StatelessWidget {
             ),
             const Gap(heigth: 12, width: 0),
             ListTile(
-              onTap: () => showCurrencies(context, mainCurrencies),
+              onTap: () => showCurrenciesAction(context, mainCurrencies),
               tileColor: Colors.grey.withOpacity(0.05),
               contentPadding: const EdgeInsets.symmetric(horizontal: 30),
               shape: RoundedRectangleBorder(
