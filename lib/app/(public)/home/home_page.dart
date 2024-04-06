@@ -10,6 +10,7 @@ import 'package:quotation_currency_app/app/interactor/actions/quotation_actions.
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/global_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/quotation_atoms.dart';
+import 'package:quotation_currency_app/app/interactor/dtos/input/quotation_details_dto.dart';
 import 'package:quotation_currency_app/app/utils/constants/currencies.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
 import 'package:quotation_currency_app/routes.dart';
@@ -31,16 +32,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final currency = context.select(() => selectedCurrency);
-    final isLoading = context.select(() => loading);
-    final quotations = context.select(() => allQuoations);
+    // states
+    final currency$ = context.select(() => selectedCurrencyState$.value);
+    final isLoading$ = context.select(() => loadingState$.value);
+    final quotations$ = context.select(() => quotationsState$.value);
 
+    // observer
     rxObserver(() => selectedCurrency, effect: (c) {
-      if (c!.code != currency.code) {
+      if (c!.code != currency$.code) {
         getAllQuotation(selectedCurrency.code);
       }
     });
 
+    // Widgets Tree
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -49,12 +53,12 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 AppBarHome(
-                  currency: currency,
-                  isLoading: isLoading,
+                  currency: currency$,
+                  isLoading: isLoading$,
                   onTap: () => showCurrencies(context, mainCurrencies),
-                  onRefresh: () => getAllQuotation(currency.code),
+                  onRefresh: () => getAllQuotation(currency$.code),
                 ),
-                (isLoading)
+                (isLoading$)
                     ? const SkeletonHome()
                     : Column(
                         children: [
@@ -80,7 +84,12 @@ class _HomePageState extends State<HomePage> {
                             selectedCurrencyCode: selectedCurrency.code,
                             value: highestQuote?.value ?? 0.0,
                             pctChange: highestQuote?.pctChange ?? 0.0,
-                            onTap: () {},
+                            onTap: () {
+                              Routefly.pushNavigate(
+                                routePaths.details,
+                                arguments: QuotationDetailDTO(quotation: highestQuote ?? quotations$[0], codeIn: selectedCurrency.code),
+                              );
+                            },
                           ),
                           const Gap(heigth: 24, width: 0),
                           Row(
@@ -121,11 +130,17 @@ class _HomePageState extends State<HomePage> {
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                               itemCount: 2,
                               itemBuilder: (context, index) {
-                                final quotation = quotations[index];
+                                if (quotations$.isEmpty) return Container();
+                                final quotation = quotations$[index];
                                 return CardBox(
                                   quotation: quotation,
-                                  currency: currency,
-                                  onTap: () {},
+                                  currency: currency$,
+                                  onTap: () {
+                                    Routefly.pushNavigate(
+                                      routePaths.details,
+                                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency.code),
+                                    );
+                                  },
                                 );
                               },
                             ),

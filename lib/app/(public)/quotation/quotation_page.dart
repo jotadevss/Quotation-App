@@ -4,7 +4,9 @@ import 'package:quotation_currency_app/app/(public)/home/components/card_box.com
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/quotation_atoms.dart';
+import 'package:quotation_currency_app/app/interactor/dtos/input/quotation_details_dto.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
+import 'package:quotation_currency_app/routes.dart';
 import 'package:routefly/routefly.dart';
 
 class QuotationPagee extends StatelessWidget {
@@ -76,7 +78,12 @@ class QuotationPagee extends StatelessWidget {
                 return CardBox(
                   quotation: quotation,
                   currency: currency,
-                  onTap: () {},
+                  onTap: () {
+                    Routefly.pushNavigate(
+                      routePaths.details,
+                      arguments: QuotationDetailDTO(quotation: quotation, codeIn: selectedCurrency.code),
+                    );
+                  },
                 );
               },
             ),

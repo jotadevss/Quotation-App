@@ -80,7 +80,7 @@ class CardBox extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            Icons.arrow_drop_up_rounded,
+                            (quotation.pctChange < 0) ? Icons.arrow_drop_down_rounded : Icons.arrow_drop_up_rounded,
                             color: (quotation.pctChange < 0) ? Colors.red : Colors.green,
                           ),
                           Text(

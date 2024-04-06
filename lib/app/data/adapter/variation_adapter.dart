@@ -9,7 +9,7 @@ class VariationAdapter {
       codeIn: map['codein'].toString(),
       value: double.parse(map['bid']),
       pctChange: double.parse(map['pctChange']),
-      date: DateTime.fromMillisecondsSinceEpoch(int.parse(map['timestamp'])),
+      date: DateTime.fromMillisecondsSinceEpoch(int.parse(map['timestamp']) * 1000),
     );
   }
 
