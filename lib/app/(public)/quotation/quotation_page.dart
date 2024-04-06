@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
-import 'package:quotation_currency_app/app/(public)/home/components/card_box.component.dart';
+import 'package:quotation_currency_app/app/(public)/home/components/home_card_box.component.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/quotation_atoms.dart';

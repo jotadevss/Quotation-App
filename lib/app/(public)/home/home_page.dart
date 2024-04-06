@@ -1,9 +1,9 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
-import 'package:quotation_currency_app/app/(public)/home/components/app_bar_home.component.dart';
-import 'package:quotation_currency_app/app/(public)/home/components/card_box.component.dart';
-import 'package:quotation_currency_app/app/(public)/home/components/main_card.component.dart';
-import 'package:quotation_currency_app/app/(public)/home/components/skeleton_home.component.dart';
+import 'package:quotation_currency_app/app/(public)/home/components/home_app_bar.component.dart';
+import 'package:quotation_currency_app/app/(public)/home/components/home_card_box.component.dart';
+import 'package:quotation_currency_app/app/(public)/home/components/home_main_card.component.dart';
+import 'package:quotation_currency_app/app/(public)/shared/skeletons/home_skeleton.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
 import 'package:quotation_currency_app/app/interactor/actions/currency_actions.dart';
 import 'package:quotation_currency_app/app/interactor/actions/quotation_actions.dart';

@@ -1,7 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
-import 'package:quotation_currency_app/app/(public)/currency/components/label_currency.component.dart';
+import 'package:quotation_currency_app/app/(public)/currency/components/currency_label.component.dart';
 import 'package:quotation_currency_app/app/interactor/atoms/currency_atoms.dart';
 import 'package:quotation_currency_app/app/utils/constants/currencies.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
