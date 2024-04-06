@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quotation_currency_app/app/(public)/shared/components/gap.dart';
+import 'package:quotation_currency_app/app/interactor/atoms/variation_atoms.dart';
 import 'package:quotation_currency_app/app/interactor/models/quotation.dart';
 import 'package:quotation_currency_app/app/utils/constants/styles.dart';
 import 'package:routefly/routefly.dart';
@@ -18,6 +19,7 @@ class AppBarDetail extends StatelessWidget {
       children: [
         OutlinedButton(
           onPressed: () {
+            variationState$.value.clear();
             Routefly.pop(context);
           },
           style: ButtonStyle(

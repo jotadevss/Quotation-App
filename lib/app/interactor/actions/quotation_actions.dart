@@ -18,7 +18,7 @@ Future<void> getAllQuotationAction(String codeIn) async {
 
   final pairs = await pairRepository.getPairs(codeIn) as List<PairDTO>;
   final quotations = await quotationRepository.getAllQuotations(pairs);
-
+  print(quotations);
   setQuotationsAction(quotations);
 
   setLoadingAction(false);

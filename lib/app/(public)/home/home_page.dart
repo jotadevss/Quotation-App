@@ -35,13 +35,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // states
     final selectedCurrency$ = context.select(() => selectedCurrencyState$.value);
-    final currency$ = context.select(() => selectedCurrencyState$.value);
     final isLoading$ = context.select(() => loadingState$.value);
     final quotations$ = context.select(() => quotationsState$.value);
 
     // observer
-    rxObserver(() => selectedCurrency$, effect: (c) {
-      if (c!.code != currency$.code) {
+    rxObserver(() => selectedCurrencyState$.value, effect: (c) {
+      if (c!.code != selectedCurrency$.code) {
         getAllQuotationAction(selectedCurrency$.code);
       }
     });
@@ -55,10 +54,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 AppBarHome(
-                  currency: currency$,
+                  currency: selectedCurrency$,
                   isLoading: isLoading$,
                   onTap: () => showCurrenciesAction(context, mainCurrencies),
-                  onRefresh: () => getAllQuotationAction(currency$.code),
+                  onRefresh: () => getAllQuotationAction(selectedCurrency$.code),
                 ),
                 (isLoading$)
                     ? const SkeletonHome()
@@ -136,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                                 final quotation = quotations$[index];
                                 return CardBox(
                                   quotation: quotation,
-                                  currency: currency$,
+                                  currency: selectedCurrency$,
                                   onTap: () {
                                     Routefly.pushNavigate(
                                       routePaths.details,

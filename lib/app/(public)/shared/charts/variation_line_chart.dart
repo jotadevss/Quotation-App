@@ -38,7 +38,7 @@ class LineChartVariation extends StatelessWidget {
     final values = valuesInRangeToChart;
 
     if (values.isEmpty) {
-      for (var i = 0; i < 16; i++) {
+      for (var i = 0; i < 15; i++) {
         final spot = FlSpot(i.toDouble() + 1, 2.5);
         spots.add(spot);
       }
@@ -56,7 +56,7 @@ class LineChartVariation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // States
-    final variations$ = context.select(() => reversedVariations);
+    final variations$ = context.select(() => variationState$.value);
 
     // Widgets
     final getBottonTitles = AxisTitles(
